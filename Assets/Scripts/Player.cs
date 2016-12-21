@@ -13,7 +13,6 @@ public class Player :LivingEntity
 	}
     void Update()
     {
-        controller.Move(InputHandlerPlayer.input * speed * Time.deltaTime);
     }
 
 }
