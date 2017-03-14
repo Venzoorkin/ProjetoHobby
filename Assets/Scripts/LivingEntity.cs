@@ -3,6 +3,7 @@ using System.Collections;
 
 public class LivingEntity : MonoBehaviour
 {
+    public enum State { Idle,Moving,Attacking}
     public float startingHealth;
     protected float currentHealth;
     protected bool dead;

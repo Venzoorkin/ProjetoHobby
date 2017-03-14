@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Combo
 {
+    public string comboIdentifier;
     public Queue<Directions> directionsQueue;
 
 }

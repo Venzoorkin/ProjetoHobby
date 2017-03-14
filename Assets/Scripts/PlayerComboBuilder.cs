@@ -48,14 +48,23 @@ public class PlayerComboBuilder : MonoBehaviour
             playerCombos[i].directionsQueue = new Queue<Directions>();
             for (int j = 0; j <= stringQueue.Count; j++)
             {
-                if (stringQueue.Peek().Contains("SKIP")==false)
+                if (stringQueue.Peek().Contains("IDENTIFIER"))
                 {
-                    playerCombos[i].directionsQueue.Enqueue(StringCompare(stringQueue.Dequeue()));
-                    Debug.Log(playerCombos[i]);
+                    playerCombos[i].comboIdentifier = stringQueue.Dequeue();
+                    playerCombos[i].comboIdentifier = playerCombos[i].comboIdentifier.Substring(11);
                 }
                 else
                 {
-                    Debug.Log(stringQueue.Dequeue().ToString());
+
+                    if (stringQueue.Peek().Contains("SKIP") == false)
+                    {
+                        playerCombos[i].directionsQueue.Enqueue(StringCompare(stringQueue.Dequeue()));
+                        Debug.Log(playerCombos[i]);
+                    }
+                    else
+                    {
+                        Debug.Log(stringQueue.Dequeue().ToString());
+                    }
                 }
             }
         }

@@ -12,10 +12,8 @@ public class InputController : MonoBehaviour
    Transform AngleFixer;
     public Swipe currentSwipe;
 
-    void Awake()
-    {
-
-    }
+    public delegate void SwipeActon(Swipe swipeDegree);
+    public static event SwipeActon Swiped;
 
     void Update()
     {
@@ -33,7 +31,7 @@ public class InputController : MonoBehaviour
             transform.GetChild(0).transform.rotation = Quaternion.Euler(0f, 0f, swipeDegree);
             swipeDegree = transform.GetChild(0).transform.rotation.eulerAngles.z;
             currentSwipe = new Swipe(swipeDegree);
-            Debug.Log(currentSwipe.swipeDirection);
+            Swiped(currentSwipe);
 
         }
     }
@@ -80,7 +78,9 @@ public class Swipe
         {
             return Directions.DOWN;
         }
-       else if (Degree >300 &&Degree <= 330)
+       else if (Degree >300 
+            &&
+            Degree <= 330)
         {
             return Directions.DOWN_RIGHT;
         }
